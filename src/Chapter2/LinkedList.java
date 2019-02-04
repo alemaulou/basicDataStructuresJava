@@ -37,10 +37,30 @@ public class LinkedList<E> implements Iterator<E> {
             return "Node [value=" + value + ", next=" + next + "]";
         }
     }
+   
+    // Insert Node at the end of the LinkedList
+    public Node<E> appendLast(E value) {
+        
+        Node<E> node = getNewNode();
+        node.value = value;
+        
+        if(last != null) {
+            last.next = node;
+            last = node;
+        }
+        
+        if(first == null) {
+            first = node;
+        }
+        length++;
+        
+        return node;
+
+    }
     
     protected Node<E> getNewNode() {
         Node<E> node = new Node<>();
         lastModifiedNode = new Node[] {node};
-        return node;
+        return node; 
     }
 }
